@@ -35,17 +35,20 @@ export class UsuarioCrudProvider {
     return new Promise((resolve, reject)=>{
       if (usuario.key ){
         this.db.list(this.PATH)
-        .update(usuario.key, {name: usuario.nome, email: usuario.email, password: usuario.senha, type: usuario.perfil})
+        .update(usuario.key, {name: usuario.nome, e_mail: usuario.email, password: usuario.senha, type: usuario.perfil})
         .then(() => resolve())
         .catch((e) => reject(e));
       } else {
-
+        this.db.list(this.PATH)
+        .push({ name: usuario.nome, e_mail: usuario.email, password: usuario.senha, type: usuario.perfil})
+        .then(()=> resolve());
       }
-    })
+    });
 
   }
 
   remove(key: string){
+    return this.db.list(this.PATH).remove(key);
 
   }
 
