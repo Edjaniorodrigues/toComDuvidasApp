@@ -32,6 +32,16 @@ export class UsuarioCrudProvider {
   }
 
   save(usuario: any){
+    return new Promise((resolve, reject)=>{
+      if (usuario.key ){
+        this.db.list(this.PATH)
+        .update(usuario.key, {name: usuario.nome, email: usuario.email, password: usuario.senha, type: usuario.perfil})
+        .then(() => resolve())
+        .catch((e) => reject(e));
+      } else {
+
+      }
+    })
 
   }
 
