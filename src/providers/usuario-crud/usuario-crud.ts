@@ -9,7 +9,7 @@ export class UsuarioCrudProvider {
   constructor(private db: AngularFireDatabase) {
     
   }
-
+  //Método para recuperar todos os Usuários do firestore
   getAll(){
     return this.db.list(this.PATH)
     .snapshotChanges()
@@ -21,7 +21,13 @@ export class UsuarioCrudProvider {
     })
   }
 
+  //Método para recuperar um único usuário do Firestore
   get(key: string){
+    return this.db.object(this.PATH + key)
+    .snapshotChanges()
+    .map(c =>{
+      return {key: c.key, data: c.payload.val()};
+    })
 
   }
 
