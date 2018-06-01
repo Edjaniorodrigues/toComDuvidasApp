@@ -6,6 +6,7 @@ import { MyApp } from './app.component';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
+import { UsuariosPage } from '../pages/usuarios/usuarios';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { AngularFireModule } from 'angularfire2';
@@ -21,6 +22,7 @@ import { UsuarioCrudProvider } from '../providers/usuario-crud/usuario-crud';
     AboutPage,
     ContactPage,
     HomePage,
+    UsuariosPage,
     TabsPage
   ],
   imports: [
@@ -34,6 +36,7 @@ import { UsuarioCrudProvider } from '../providers/usuario-crud/usuario-crud';
     AboutPage,
     ContactPage,
     HomePage,
+    UsuariosPage,
     TabsPage
   ],
   providers: [

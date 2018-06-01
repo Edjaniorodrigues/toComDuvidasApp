@@ -4,7 +4,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 
 @Injectable()
 export class UsuarioCrudProvider {
-  private PATH = 'contact/';
+  private PATH = 'usuarios/';
 
   constructor(private db: AngularFireDatabase) {
     
