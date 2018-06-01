@@ -13,6 +13,7 @@ import { FIREBASE_CREDENTIALS } from './firebase.credentials';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { UsuarioCrudProvider } from '../providers/usuario-crud/usuario-crud';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    UsuarioCrudProvider
   ]
 })
 export class AppModule {}
