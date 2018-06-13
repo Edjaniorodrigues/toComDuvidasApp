@@ -14,7 +14,7 @@ import { UsuariosPage } from '../pages/usuarios/usuarios';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireDatabaseModule } from 'angularfire2/database';
 import { FIREBASE_CREDENTIALS } from './firebase.credentials';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -36,7 +36,15 @@ import { UsuarioCrudProvider } from '../providers/usuario-crud/usuario-crud';
     BrowserModule,
     //HttpModule,
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(FIREBASE_CREDENTIALS)
+    AngularFireModule.initializeApp({
+      apiKey: "AIzaSyCfYKUDiy7JXHK8PG94zrpl1l6KQNt7nE0",
+      authDomain: "tocomduvidasapp.firebaseapp.com",
+      databaseURL: "https://tocomduvidasapp.firebaseio.com",
+      projectId: "tocomduvidasapp",
+      storageBucket: "tocomduvidasapp.appspot.com",
+      messagingSenderId: "391259742703"
+    }),
+    AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

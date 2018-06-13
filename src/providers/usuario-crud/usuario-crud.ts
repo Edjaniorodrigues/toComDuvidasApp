@@ -15,10 +15,7 @@ export class UsuarioCrudProvider {
     return this.db.list(this.PATH)
     .snapshotChanges()
     .map(changes => {
-      return changes.map(c => ({
-        key: c.payload.key,
-        data: c.payload.val()
-      }));
+      return changes.map(user => ({key: user.payload.key, ...user.payload.val()}));
     })
   }
 
@@ -26,25 +23,25 @@ export class UsuarioCrudProvider {
   get(key: string){
     return this.db.object(this.PATH + key)
     .snapshotChanges()
-    .map(c =>{
+    .map(user =>{
       //return {key: c.key, data: c.payload.val()};
-      return {key: c.key, ...c.payload.val()};
+      return {key: user.key, ...user.payload.val() };
     })
 
   }
 
   save(usuario: any){
-    return new Promise((resolve, reject)=>{
+    return new Promise((resolve, reject) =>{
       if (usuario.key ){
         this.db.list(this.PATH)
         //.update(usuario.key, {name: usuario.nome, e_mail: usuario.email, password: usuario.senha, type: usuario.perfil})
-        .update(usuario.key, { ...usuario.nome, ...usuario.email, ...usuario.senha, ...usuario.perfil})
+        .update(usuario.key, { nome: usuario.nome, email: usuario.email, senha: usuario.senha, perfil: usuario.perfil})
         .then(() => resolve())
         .catch((e) => reject(e));
       } else {
         this.db.list(this.PATH)
         //.push({ name: usuario.nome, e_mail: usuario.email, password: usuario.senha, type: usuario.perfil})
-        .push({ ...usuario.nome, ...usuario.email, ...usuario.senha, ...usuario.perfil})
+        .push({ nome: usuario.nome, email: usuario.email, senha: usuario.senha, perfil: usuario.perfil})
         .then(()=> resolve());
       }
     });

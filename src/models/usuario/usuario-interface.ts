@@ -3,5 +3,5 @@ export interface Usuario_Interface{
     email: string;
     senha: string;
     perfil: string;
-    id?: string;
+    key?: string;
 }

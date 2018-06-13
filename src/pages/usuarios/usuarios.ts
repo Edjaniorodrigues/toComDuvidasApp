@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { UsuarioCrudProvider } from '../../providers/usuario-crud/usuario-crud';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Usuario_Interface } from '../../models/usuario/usuario-interface';
 
 
 @IonicPage()
@@ -11,10 +12,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: 'usuarios.html',
 })
 export class UsuariosPage {
-
   title: string;
   form: FormGroup;
-  usuario: any;
+  usuario: Usuario_Interface;
 
   constructor(
     public navCtrl: NavController, 
@@ -33,14 +33,17 @@ export class UsuariosPage {
   private setupPageTitle(){
     this.title = this.navParams.data.usuario ? 'Alteração de Usuário' : 'Novo Usuário';  
   }
+  paginaInicial(){
+    this.navCtrl.push('tabs');
+  }
 
   createForm(){
     this.form = this.formBuilder.group({
       key: [this.usuario.key],
-      name: [this.usuario.nome, Validators.required],
-      e_mail: [this.usuario.email, Validators.required],
-      password: [this.usuario.senha, Validators.required],
-      type: [this.usuario.perfil, Validators.required],
+      nome: [this.usuario.nome, Validators.required],
+      email: [this.usuario.email, Validators.required],
+      senha: [this.usuario.senha, Validators.required],
+      perfil: [this.usuario.perfil, Validators.required],
     });
   }
  onSubmit(){
@@ -48,6 +51,7 @@ export class UsuariosPage {
      this.provider.save(this.form.value)
      .then(()=>{
       this.toast.create({ message: 'Usuário Cadastrado com Sucesso!', duration: 3000}).present();
+      console.log(this.form.value);
       this.navCtrl.pop();
     })
      .catch((e)=>{

@@ -13,51 +13,52 @@
   
   <ion-item>
     <ion-label stacked>Nome</ion-label>
-    <ion-input type="text" formControlName="name"></ion-input>
+    <ion-input type="text" formControlName="nome"></ion-input>
   </ion-item>
 
-    <ion-item *ngIf="!form.controls.name.valid && (form.controls.name.dirty || form.controls.name.touched)" color="danger">
-      <div [hidden]="!form.controls.name.errors.required">
+    <ion-item *ngIf="!form.controls.nome.valid && (form.controls.nome.dirty || form.controls.nome.touched)" color="danger">
+      <div [hidden]="!form.controls.nome.errors.required">
         Campo Obrigatório
       </div>
     </ion-item >
 
     <ion-item>
         <ion-label stacked>Email</ion-label>
-        <ion-input type="text" formControlName="e_mail"></ion-input>
+        <ion-input type="text" formControlName="email"></ion-input>
       </ion-item>
     
-        <ion-item *ngIf="!form.controls.e_mail.valid && (form.controls.e_mail.dirty || form.controls.e_mail.touched)" color="danger">
-          <div [hidden]="!form.controls.e_mail.errors.required">
+        <ion-item *ngIf="!form.controls.email.valid && (form.controls.email.dirty || form.controls.email.touched)" color="danger">
+          <div [hidden]="!form.controls.email.errors.required">
             Campo Obrigatório
           </div>
         </ion-item >
 
         <ion-item>
           <ion-label stacked>Senha</ion-label>
-          <ion-input type="password" formControlName="password"></ion-input>
+          <ion-input type="password" formControlName="senha"></ion-input>
         </ion-item>
       
-          <ion-item *ngIf="!form.controls.password.valid && (form.controls.password.dirty || form.controls.password.touched)" color="danger">
-            <div [hidden]="!form.controls.password.errors.required">
+          <ion-item *ngIf="!form.controls.senha.valid && (form.controls.senha.dirty || form.controls.senha.touched)" color="danger">
+            <div [hidden]="!form.controls.senha.errors.required">
               Campo Obrigatório
             </div>
           </ion-item >
 
           <ion-item>
             <ion-label stacked>Perfil</ion-label>
-            <ion-input type="text" formControlName="type"></ion-input>
+            <ion-input type="text" formControlName="perfil"></ion-input>
           </ion-item>
         
-            <ion-item *ngIf="!form.controls.type.valid && (form.controls.type.dirty || form.controls.type.touched)" color="danger">
-              <div [hidden]="!form.controls.type.errors.required">
+            <ion-item *ngIf="!form.controls.perfil.valid && (form.controls.perfil.dirty || form.controls.perfil.touched)" color="danger">
+              <div [hidden]="!form.controls.perfil.errors.required">
                 Campo Obrigatório
               </div>
             </ion-item >
         
         <div paddind>
         <button ion-button block type="submit" (click)="onSubmit()">Salvar</button>
-    </div>
+        <button ion-button (click)="paginaInicial()">Back</button>
+      </div>
 
 </form>
 
