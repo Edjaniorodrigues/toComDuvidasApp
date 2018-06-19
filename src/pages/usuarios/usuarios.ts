@@ -4,6 +4,7 @@ import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angu
 import { UsuarioCrudProvider } from '../../providers/usuario-crud/usuario-crud';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Usuario_Interface } from '../../models/usuario/usuario-interface';
+import { HomePage } from '../../pages/home/home';
 
 
 @IonicPage()
@@ -33,9 +34,6 @@ export class UsuariosPage {
   private setupPageTitle(){
     this.title = this.navParams.data.usuario ? 'Alteração de Usuário' : 'Novo Usuário';  
   }
-  paginaInicial(){
-    this.navCtrl.push('tabs');
-  }
 
   createForm(){
     this.form = this.formBuilder.group({
@@ -52,7 +50,7 @@ export class UsuariosPage {
      .then(()=>{
       this.toast.create({ message: 'Usuário Cadastrado com Sucesso!', duration: 3000}).present();
       console.log(this.form.value);
-      this.navCtrl.pop();
+      this.navCtrl.setRoot(HomePage);
     })
      .catch((e)=>{
        this.toast.create({ message: "Erro ao Cadastrar Usuário!", duration: 3000}).present();
