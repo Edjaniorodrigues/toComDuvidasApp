@@ -2,13 +2,16 @@
 //import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
-import 'rxjs/add/operator/map'
+import { AngularFireAuth } from 'angularfire2/auth';
+
+
+//import {} from 'rxjs/add/operator/map'
 
 @Injectable()
 export class UsuarioCrudProvider {
   private PATH = 'usuarios/';
 
-  constructor(private db: AngularFireDatabase) {
+  constructor(private db: AngularFireDatabase, private angularFireAuth: AngularFireAuth) {
     
   }
   //Método para recuperar todos os Usuários do firestore
@@ -16,8 +19,8 @@ export class UsuarioCrudProvider {
     return this.db.list(this.PATH)
     .snapshotChanges()
     .map(changes => {
-      return changes.map(user => ({key: user.payload.key, ...user.payload.val()}));
-    })
+    return changes.map(user => ({key: user.payload.key, ...user.payload.val()}));
+    }); 
   }
 
   //Método para recuperar um único usuário do Firestore
@@ -27,7 +30,7 @@ export class UsuarioCrudProvider {
     .map(user =>{
       //return {key: c.key, data: c.payload.val()};
       return {key: user.key, ...user.payload.val() };
-    })
+    });
 
   }
 
