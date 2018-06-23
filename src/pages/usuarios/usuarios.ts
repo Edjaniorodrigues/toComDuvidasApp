@@ -41,7 +41,6 @@ export class UsuariosPage {
       nome: [this.usuario.nome, Validators.required],
       email: [this.usuario.email, Validators.required],
       senha: [this.usuario.senha, Validators.required],
-      perfil: [this.usuario.perfil, Validators.required],
     });
   }
  onSubmit(){

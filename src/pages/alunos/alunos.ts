@@ -25,10 +25,6 @@ export class AlunosPage {
     this.usuariosObservable = this.provider.getAll();
   }
 
-  newUser(){
-    this.navCtrl.push(UsuariosPage);
-  }
-
   editUser(usuario: any){
     this.navCtrl.push(UsuariosPage,{usuario: usuario});
   }

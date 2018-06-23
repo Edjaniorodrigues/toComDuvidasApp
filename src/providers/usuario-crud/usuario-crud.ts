@@ -9,7 +9,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 
 @Injectable()
 export class UsuarioCrudProvider {
-  private PATH = 'usuarios/';
+  private PATH = 'usuarios';
 
   constructor(private db: AngularFireDatabase, private angularFireAuth: AngularFireAuth) {
     
@@ -39,13 +39,14 @@ export class UsuarioCrudProvider {
       if (usuario.key ){
         this.db.list(this.PATH)
         //.update(usuario.key, {name: usuario.nome, e_mail: usuario.email, password: usuario.senha, type: usuario.perfil})
-        .update(usuario.key, { nome: usuario.nome, email: usuario.email, senha: usuario.senha, perfil: usuario.perfil})
+        .update(usuario.key, { nome: usuario.nome, email: usuario.email, senha: usuario.senha})
         .then(() => resolve())
         .catch((e) => reject(e));
+        console.log(usuario.key);
       } else {
         this.db.list(this.PATH)
         //.push({ name: usuario.nome, e_mail: usuario.email, password: usuario.senha, type: usuario.perfil})
-        .push({ nome: usuario.nome, email: usuario.email, senha: usuario.senha, perfil: usuario.perfil})
+        .push({ nome: usuario.nome, email: usuario.email, senha: usuario.senha})
         .then(()=> resolve());
       }
     });

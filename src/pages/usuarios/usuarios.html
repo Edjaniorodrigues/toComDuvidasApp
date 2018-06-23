@@ -43,17 +43,6 @@
               Campo Obrigatório
             </div>
           </ion-item >
-
-          <ion-item>
-            <ion-label stacked>Perfil</ion-label>
-            <ion-input type="text" formControlName="perfil"></ion-input>
-          </ion-item>
-        
-            <ion-item *ngIf="!form.controls.perfil.valid && (form.controls.perfil.dirty || form.controls.perfil.touched)" color="danger">
-              <div [hidden]="!form.controls.perfil.errors.required">
-                Campo Obrigatório
-              </div>
-            </ion-item >
         
         <div paddind>
         <button ion-button block type="submit" (click)="onSubmit()">Salvar</button>
